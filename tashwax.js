@@ -34,7 +34,6 @@ define(['jquery', 'mustache'], function ($, Mustache) {
             } else {
                 // otherwise load (if not alreayd in the load queue)
                 var me = this;
-                debugger;
                 if (!this.inLoadQueue(src)) {
                     // add to queue and load it
                     this.loadQueue.push({src: src, callback: callback});
