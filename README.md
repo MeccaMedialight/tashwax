@@ -5,6 +5,7 @@ Helper module for using Mustache templates. Designed to work with require.js.
 Example use:
 
 ```javascript
+var tash = require('tashwax'), data;
 tash.loadAndRender('./templates/template.html', data, $('#test'));
 ```
 
@@ -15,9 +16,9 @@ is loaded, it will be stashed in memory (to avoid having to make another request
 Example use:
 
 ```javascript
-`tash.loadTemplate('./templates/template.html', function(tpl, src){
+tash.loadTemplate('./templates/template.html', function(tpl, src){
     $target.html(Mustache.render(tpl, data));
- });`
+ });
 ```
 
 This will load a template from /templates/template.html. A callback function will
