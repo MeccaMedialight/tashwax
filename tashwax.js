@@ -1,15 +1,27 @@
 /**
  * Little helper for loading (and rendering) mustache templates. Desgined to work
  * with jquery and requirejs 
- * by Luke (medialight.com.au)
  * 
- * @param {type} $
- * @param {type} Mustache
- * @returns {tashwaxL#4.tashwax}
+ * by Luke (medialight.com.au)
  */
-define(['jquery', 'mustache'], function ($, Mustache) {
+(function (root, factory) {
+    "use strict";
+    if (typeof module !== 'undefined' && module.exports) {
+        // CommonJS module is defined  (needs testing!)
+        module.exports = factory(require("jquery")(root), require("mustache"));
+    } else if (typeof define === "function" && define.amd) {
+        // AMD module is defined
+        // Register as an anonymous AMD module:
+        define(["jquery", "mustache"], factory);
 
-    var tashwax = {
+    } else {
+        // 
+        root.tashwax = factory(root.jQuery, root.Mustache);
+    }
+
+}(this, function ($, Mustache) {
+
+    return {
         urlBase: '', // base url for templates 
         loadQueue: [], // templates to load
         loader: '<div class="spinner"></div>',
@@ -116,5 +128,4 @@ define(['jquery', 'mustache'], function ($, Mustache) {
             this.loadQueue = newQ;
         }
     };
-    return tashwax;
-});
+}));

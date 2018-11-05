@@ -1,8 +1,6 @@
 // just for the demo
 define(function (require) {
     var tash = require('tashwax'), viewData;
-
-
     $(document).ready(function () {
 
         // 1. The easiest? ... load template and render into an element
@@ -21,5 +19,4 @@ define(function (require) {
             $('#test3').html(tash.render(tpl, viewData));
         });
     });
-
 });

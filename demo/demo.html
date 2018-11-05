@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tashwax</title>
+
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <h1>Tashwax Demo 1</h1>
+
+        <p>1. The easiest? ... load template and render into an element</p>
+        <pre><code>tashwax.loadAndRender('./templates/template.html', viewData, $('#test'));</code></pre>
+
+        <div class="testbx" id="test"> 
+            Ready! 
+        </div>
+        <p>2. Load a template, render it and make a callback with rendered HTML</p>
+        <pre><code>tashwax.loadAndRender('./templates/template.html', viewData, function (ht) {
+    // do something with the rendered html
+    $('#test2').html(ht); 
+});</code></pre>
+        <div class="testbx" id="test2"> 
+            Ready! 
+        </div>
+        <p>3. Load a template, callback with the template when its ready</p>
+        <pre><code>tashwax.loadTemplate('./templates/template.html', function (tpl, src) {
+    // do something with the template
+    $('#test3').html(tashwax.render(tpl, viewData));
+});</code></pre>
+        <div class="testbx"  id="test3"> 
+            Ready! 
+        </div>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="lib/mustache.js"></script>
+        <script src="../tashwax.js"></script>
+        <script>
+            $(document).ready(function () {
+
+                // 1. The easiest? ... load template and render into an element
+                var viewData = {foo: 'test1'};
+                tashwax.loadAndRender('./templates/template.html', viewData, $('#test'));
+
+                // 2. Load a template, render it and make a callback with rendered HTML
+                viewData = {foo: 'test2'};
+                tashwax.loadAndRender('./templates/template.html', viewData, function (ht) {
+                    $('#test2').html(ht);
+                });
+
+                // 3. Load a template, callback with the template when its ready
+                viewData = {foo: 'test3'};
+                tashwax.loadTemplate('./templates/template.html', function (tpl, src) {
+                    $('#test3').html(tashwax.render(tpl, viewData));
+                });
+            });
+        </script>
+    </body>
+</html>

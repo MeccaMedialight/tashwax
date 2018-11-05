@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tashwax</title>
+        <link rel="stylesheet" href="css/style.css">
+
+        <script data-main="app" src="lib/require.js"></script>
+    </head>
+    <body>
+        <h1>Tashwax Demo 2 (AMD style ... Op, op, op, op)</h1>
+
+        <p>1. The easiest? ... load template and render into an element</p>
+        <pre><code>tashwax.loadAndRender('./templates/template.html', viewData, $('#test'));</code></pre>
+
+        <div class="testbx" id="test"> 
+            Ready! 
+        </div>
+        <p>2. Load a template, render it and make a callback with rendered HTML</p>
+        <pre><code>tashwax.loadAndRender('./templates/template.html', viewData, function (ht) {
+    // do something with the rendered html
+    $('#test2').html(ht); 
+});</code></pre>
+        <div class="testbx" id="test2"> 
+            Ready! 
+        </div>
+        <p>3. Load a template, callback with the template when its ready</p>
+        <pre><code>tashwax.loadTemplate('./templates/template.html', function (tpl, src) {
+    // do something with the template
+    $('#test3').html(tashwax.render(tpl, viewData));
+});</code></pre>
+        <div class="testbx"  id="test3"> 
+            Ready! 
+        </div>
+
+
+    </body>
+</html>
