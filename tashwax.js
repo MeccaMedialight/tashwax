@@ -55,7 +55,9 @@
                         me.callQueue(src, template);
                     });
                 } else {
-                    // add to queue (so we can make the callback when its loaded)
+                    // The src is already queued for loading (so a GET request will have been made, 
+                    // so we dont need to make another ajax call, but we still add to the queue 
+                    // so this callback can get made when the src is load)
                     this.loadQueue.push({src: src, callback: callback});
                 }
             }
@@ -96,7 +98,7 @@
             return Mustache.render(tpl, data);
         },
         /**
-         * Chekc if the template (src) is in the queue
+         * Check if the template (src) is in the queue
          * @param {type} src
          * @returns {Boolean}
          */
