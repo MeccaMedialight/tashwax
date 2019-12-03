@@ -7,23 +7,40 @@
         <script data-main="app" src="lib/require.js"></script>
     </head>
     <body>
-        <h1>Tashwax Demo 2 (AMD style ... Op, op, op, op)</h1>
+        <h1>
+            Tashwax Demo 2 (AMD style ... Op, op, op, op)
+        </h1>
+        <p>
+            Simple demo of the <a href="https://github.com/MeccaMedialight/tashwax">tashwax helper</a>. Note - due to browser access control checks, nothing much will 
+            happen if you simply open this file with your browser (ie file:///Users/lukew/.../demo.html) 
+        </p>
 
-        <p>1. The easiest? ... load template and render into an element</p>
+        <p>
+            There are three ways tashwax can be used:
+        </p>
+
+       <p>
+        1. The easiest? ... load <a href="./templates/template.html">this template</a> and render 
+        into an element all in one line of code:
+        </p>
         <pre><code>tashwax.loadAndRender('./templates/template.html', viewData, $('#test'));</code></pre>
 
         <div class="testbx" id="test"> 
             Ready! 
         </div>
-        <p>2. Load a template, render it and make a callback with rendered HTML</p>
+        <p>2. Load a template, render it and make a callback with rendered HTML. This technique gives you
+        the opportunity to do something, such as hide a loading bar, after the template has loaded and 
+        just before you display the rendered result.</p>
         <pre><code>tashwax.loadAndRender('./templates/template.html', viewData, function (ht) {
-    // do something with the rendered html
+    // do something before displaying the rendered html (eg toggle the class or visibility of the target element)
     $('#test2').html(ht); 
 });</code></pre>
         <div class="testbx" id="test2"> 
             Ready! 
         </div>
-        <p>3. Load a template, callback with the template when its ready</p>
+         <p>3. Load a template, callback with the template when its ready. This option is good when you need to 
+        do something (such as check whether the view data has loaded) before rendering the 
+        the  data.</p>
         <pre><code>tashwax.loadTemplate('./templates/template.html', function (tpl, src) {
     // do something with the template
     $('#test3').html(tashwax.render(tpl, viewData));
@@ -31,7 +48,8 @@
         <div class="testbx"  id="test3"> 
             Ready! 
         </div>
-
+ <hr>
+        <p>For an non-AMD version that simply uses &lt;script&gt; tags - <a href="demo.html">see this demo</a></p>
 
     </body>
 </html>

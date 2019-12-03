@@ -1,6 +1,6 @@
 /**
  * Little helper for loading (and rendering) mustache templates. Desgined to work
- * with jquery and requirejs 
+ * with jquery and requirejs (and mustache, obviously!)
  * 
  * by Luke (medialight.com.au)
  */
@@ -8,7 +8,7 @@
     "use strict";
     if (typeof module !== 'undefined' && module.exports) {
         // CommonJS module is defined  (needs testing!)
-        module.exports = factory(require("jquery")(root), require("mustache"));
+        module.exports = factory(require("jquery"), require("mustache"));
     } else if (typeof define === "function" && define.amd) {
         // AMD module is defined
         // Register as an anonymous AMD module:
@@ -55,9 +55,9 @@
                         me.callQueue(src, template);
                     });
                 } else {
-                    // The src is already queued for loading (so a GET request will have been made, 
-                    // so we dont need to make another ajax call, but we still add to the queue 
-                    // so this callback can get made when the src is load)
+                    // The src is already queued for loading (so a GET request will have already been made, 
+                    // therefore we dont need to make another ajax call... but we still add to the queue 
+                    // so this callback can get made when the src is loaded)
                     this.loadQueue.push({src: src, callback: callback});
                 }
             }
