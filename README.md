@@ -2,6 +2,9 @@ Tashwax
 ========
 Helper module for using Mustache templates. Designed to work with require.js.
 
+<a href="https://meccamedialight.com.au/demo/tashwax/demo/demo.html">Demo</a>
+
+
 Example use:
 
 ```javascript
